@@ -32,13 +32,13 @@ int main() {
     backtraking(A);
     InitAudioDevice();  //Inicializo
     InitWindow(MAP_WIDTH, MAP_HEIGHT, "Marisa");
-        SetTargetFPS(60);
+        SetTargetFPS(30);
     float timePlayed = 0.0f;        // Time played normalized [0.0f..1.0f]
     bool pause = false;
     A(62,61) = 1;
-    Texture2D block_ = LoadTexture(R"(C:\Users\USER\Desktop\Proyecto_Progra\assets\block_.png)");
-    Texture2D finish = LoadTexture(R"(C:\Users\USER\Desktop\Proyecto_Progra\assets\META1.png)");
-    Music soundtrack = LoadMusicStream(R"(C:\Users\USER\Desktop\Proyecto_Progra\assets\BOCCHIGOD.mp3)");
+    Texture2D block_ = LoadTexture(R"(..\assets\block_.png)");
+    Texture2D finish = LoadTexture(R"(..\assets\META1.png)");
+    Music soundtrack = LoadMusicStream(R"(..\assets\BOCCHIGOD.mp3)");
     PlayMusicStream(soundtrack);
     while (!WindowShouldClose()) {
         UpdateMusicStream(soundtrack);
