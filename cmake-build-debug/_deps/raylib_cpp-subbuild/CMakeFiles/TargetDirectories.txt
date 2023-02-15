@@ -1,0 +1,3 @@
+C:/Users/USER/Desktop/Proyecto_Progra/cmake-build-debug/_deps/raylib_cpp-subbuild/CMakeFiles/raylib_cpp-populate.dir
+C:/Users/USER/Desktop/Proyecto_Progra/cmake-build-debug/_deps/raylib_cpp-subbuild/CMakeFiles/edit_cache.dir
+C:/Users/USER/Desktop/Proyecto_Progra/cmake-build-debug/_deps/raylib_cpp-subbuild/CMakeFiles/rebuild_cache.dir
