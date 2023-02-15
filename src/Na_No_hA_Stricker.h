@@ -15,8 +15,6 @@ class Bot{
 private:
     float x_{};
     float y_{};
-    float speed_x_;
-    float speed_y_;
    std::stack<std::pair<Pi,int>>Visited_coords_distance;
     std::queue<std::pair<int , int>> Frontier;
     std::stack<Pi> visited_cordinates_bot;
@@ -26,7 +24,7 @@ private:
     Rectangle bot;
 public:
 
-    Bot(float x , float y , float S_x , float S_y):x_(x),y_(y),speed_x_(S_x),speed_y_(S_y){
+    Bot(float x , float y):x_(x),y_(y){
         visited_cordinates_bot.push({x,y}); // Stablishing first coordinate
         Visited_coords_distance.push({{x,y},0});
         bot = {x*TILE_SIZE_WIDTH,y*TILE_SIZE_HEIGHT,TILE_SIZE_WIDTH,TILE_SIZE_HEIGHT};
@@ -84,16 +82,12 @@ public:
 };
 
 class Player{
-
-
 private:
     int x_{};
     int y_{};
-    float speed_x_;
-    float speed_y_;
     Color color_;
 public:
-    Player(int x , int y , float S_x , float S_y):x_(x),y_(y),speed_x_(S_x),speed_y_(S_y){
+    Player(int x , int y, Color color):x_(x),y_(y), color_(color){
     }
     ~Player()= default;
     [[nodiscard]] int getX() const {
@@ -101,28 +95,6 @@ public:
     }
     [[nodiscard]] int getY() const {
         return y_;
-    }
-    Player& operator+=(float act)
-    {
-        x_+=act;
-        return *this;
-    }
-    Player& operator-=(float act)
-    {
-        x_-=act;
-        return *this;
-    }
-    Player& operator+(float act)
-    {
-        y_+=act;
-
-        return *this;
-    }
-
-    Player & operator-(float act)
-    {
-        y_-=act;
-        return *this;
     }
     void DrawPlayer(){
         DrawRectangle(x_ * TILE_SIZE_WIDTH, y_ * TILE_SIZE_HEIGHT, TILE_SIZE_WIDTH, TILE_SIZE_HEIGHT, color_);
@@ -212,22 +184,22 @@ public:
 
     int vecinos(Player z, Laberinto y){
         int total_vec = 0;
-        if (y(y_, x_ + 1) == 1 and (z.getX() != x_ + 1 or z.getY() != y_) ){//and (x_ + 1 != 10 or y_ != 10)
+        if (y(y_, x_ + 1) == 1 and (z.getX() != x_ + 1 or z.getY() != y_) and (x_ + 1 != 10 or y_ != 10)){
             total_vec++;
         }
-        if (y(y_, x_ - 1) == 1 and (z.getX() != x_ - 1 or z.getY() != y_) ){//and (x_ - 1 != 10 or y_ != 10)
+        if (y(y_, x_ - 1) == 1 and (z.getX() != x_ - 1 or z.getY() != y_) and (x_ - 1 != 10 or y_ != 10)){
             total_vec++;
         }
-        if (y(y_ + 1, x_) == 1 and (z.getY() != y_ + 1 or z.getX() != x_) ){//and (y_ + 1 != 10 or x_ != 10)
+        if (y(y_ + 1, x_) == 1 and (z.getY() != y_ + 1 or z.getX() != x_) and (y_ + 1 != 10 or x_ != 10)){
             total_vec++;
         }
-        if (y(y_ - 1, x_) == 1 and (z.getY() != y_ - 1 or z.getX() != x_) ){//and (y_ - 1 != 10 or x_ != 10)
+        if (y(y_ - 1, x_) == 1 and (z.getY() != y_ - 1 or z.getX() != x_) and (y_ - 1 != 10 or x_ != 10)){
             total_vec++;
         }
         return total_vec;
     }
 
-    void movement(Player& t, Laberinto& y, Pi coords){
+    void movement(Player& t, Laberinto& y, Pi coords, int& trn){
         while (vecinos(t, y) == 2){
             if (y(y_ - 1, x_) == 1 and coords.first != y_ - 1 and col_play(t) and vecinos(t, y) < 3){
                 coords.first = y_;
@@ -255,12 +227,12 @@ public:
             }
             this->DrawPlayer();
         }
-        /*if (trn == 1){
+        if (trn == 1){
             trn = 2;
         }
         else if (trn == 2) {
             trn = 1;
-        }*/
+        }
     }
 
     bool verf_gan(){

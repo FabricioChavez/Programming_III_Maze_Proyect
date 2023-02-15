@@ -5,8 +5,9 @@ using namespace std;
 int main() {
 
     Laberinto A;
-    Player Alfa(1,1,20,20);
-    Bot Beta(123, 124,20,20);
+    Player Alfa(1, 1, LIGHTGRAY);
+    Player Beta(123, 124, GREEN);
+    Bot Teta(123, 124);
 
     float speed = 1;
     srand(time(nullptr));
@@ -36,12 +37,12 @@ int main() {
     float timePlayed = 0.0f;        // Time played normalized [0.0f..1.0f]
     bool pause = false;
     A(62,61) = 1;
-    Texture2D block_ = LoadTexture(R"(C:\Users\USER\Desktop\Proyecto_Progra\assets\block_.png)");
-    Texture2D finish = LoadTexture(R"(C:\Users\USER\Desktop\Proyecto_Progra\assets\META1.png)");
-    Music soundtrack = LoadMusicStream(R"(C:\Users\USER\Desktop\Proyecto_Progra\assets\BOCCHIGOD.mp3)");
+    Texture2D block_ = LoadTexture(R"(..\assets\block_.png)");
+    Texture2D finish = LoadTexture(R"(..\assets\META1.png)");
+    Music soundtrack = LoadMusicStream(R"(..\assets\BOCCHIGOD.mp3)");
     PlayMusicStream(soundtrack);
     while (!WindowShouldClose()) {
-        UpdateMusicStream(soundtrack);
+        //UpdateMusicStream(soundtrack);
         if (IsKeyPressed(KEY_P))
         {
             pause = !pause;
@@ -77,28 +78,48 @@ int main() {
         //DrawRectangle(Beta.getX()*TILE_SIZE_WIDTH,Beta.getY()*TILE_SIZE_HEIGHT,TILE_SIZE_WIDTH,TILE_SIZE_HEIGHT,BLUE);
         //Beta.DFS(A);
         //Beta.DFS2(A);
-        Beta.BFS(A);
-        if(IsKeyDown(KEY_A) and Alfa.getX() <= MAZE_HEIGHT-1 and Alfa.getX() > 0 and A(Alfa.getY(),Alfa.getX() - 1) != 0)
-        {
-            Alfa -= (speed);
-            cout << "X:" << round(Alfa.getX()) << endl;
+        Teta.BFS(A);
+
+        auto window = !WindowShouldClose();
+        int turno = 1;
+        Alfa.DrawPlayer();
+        Beta.DrawPlayer();
+        if (turno == 1){
+            pthread_key_t z;
+            z = GetKeyPressed();
+            pair<int,int> coords_ac {Alfa.getY(),Alfa.getX()};
+            if (Alfa.tecla_val(z) and Alfa.no_salga() and Alfa.sig_cuadro(A) and Alfa.col_play(Beta))
+            {
+                Alfa.avanz_play(z);
+                Alfa.DrawPlayer();
+                Alfa.movement(Beta, A, coords_ac, turno);
+                Alfa.DrawPlayer();
+            }
         }
-        else if(IsKeyDown(KEY_D) and Alfa.getX() < MAZE_HEIGHT-1 and Alfa.getX() >= 0 and A(Alfa.getY(), Alfa.getX() + 1) != 0)
-        {
-            Alfa += (speed);
-            cout << "X:" << round(Alfa.getX()) << endl;
+        if (Alfa.verf_gan()){
+            EndDrawing();
+            window = WindowShouldClose();
         }
-        else if(IsKeyDown(KEY_S) and Alfa.getY() < MAZE_HEIGHT-1 and Alfa.getY() >= 0 and A(Alfa.getY() + 1,Alfa.getX()) != 0)
-        {
-            Alfa + (speed);
-            cout << "Y:" << round(Alfa.getY()) << endl;
+
+
+        else if (turno == 2){
+            pthread_key_t z2;
+            z2 = GetKeyPressed();
+            pair<int,int> coords_ac {Beta.getY(),Beta.getX()};
+            if (Beta.tecla_val(z2) and Beta.no_salga() and Beta.sig_cuadro(A) and Beta.col_play(Alfa))
+            {
+                Beta.avanz_play(z2);
+                Beta.DrawPlayer();
+                Beta.movement(Alfa, A, coords_ac, turno);
+                Beta.DrawPlayer();
+            }
         }
-        else if(IsKeyDown(KEY_W) and Alfa.getY() <= MAZE_HEIGHT-1 and Alfa.getY() > 0 and A(Alfa.getY() - 1,Alfa.getX()) != 0)
-        {
-            Alfa - (speed);
-            cout << "Y:" << round(Alfa.getY()) << endl;
+        if (Beta.verf_gan()){
+            EndDrawing();
+            window = WindowShouldClose();
         }
-        DrawRectangle(Alfa.getX()*TILE_SIZE_WIDTH, Alfa.getY()*TILE_SIZE_HEIGHT, TILE_SIZE_WIDTH,TILE_SIZE_HEIGHT, BLUE);
+        Alfa.DrawPlayer();
+        Beta.DrawPlayer();
         GetFPS();
         EndDrawing();
     }
