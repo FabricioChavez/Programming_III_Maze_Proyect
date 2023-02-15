@@ -33,7 +33,7 @@ int main() {
     backtraking(A);
     InitAudioDevice();  //Inicializo
     InitWindow(MAP_WIDTH, MAP_HEIGHT, "Marisa");
-        SetTargetFPS(60);
+        SetTargetFPS(30);
     float timePlayed = 0.0f;        // Time played normalized [0.0f..1.0f]
     bool pause = false;
     A(62,61) = 1;
