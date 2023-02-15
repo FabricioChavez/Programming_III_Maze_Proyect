@@ -66,7 +66,9 @@ de la Universidad de Ingeniería y Tecnología 💙🤍. Esperemos les guste. �
 
 ### Descripción
 
-Este proyecto consiste en el desarrollo 
+Este proyecto consiste en el desarrollo del mítico juego del laberinto, con varios
+añadidos extra e implementaciones que se adaptan a ofrecer la mejor
+experiencia de juego posible. Este juego
 
 El proyecto consiste en la elaboración del juego Hex 
 tradicional pero con la implementación adicional de 
