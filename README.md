@@ -68,14 +68,31 @@ de la Universidad de Ingeniería y Tecnología 💙🤍. Esperemos les guste. �
 
 Este proyecto consiste en el desarrollo del mítico juego del laberinto, con varios
 añadidos extra e implementaciones que se adaptan a ofrecer la mejor
-experiencia de juego posible. Este juego
+experiencia de juego posible. Este juego tiene como objetivo ofrecer posibilidades
+infinitas a la hora de jugar, ya que ningun juego será igual que el anterior, además
+de poder configurar algunos aspectos del juego antes de empezar para mejorar la
+experiencia. No obstante, el juego también permite decidir la forma de jugar, ya sea
+entre un jugador de manera local, u contra la misma computadora.
 
-El proyecto consiste en la elaboración del juego Hex 
-tradicional pero con la implementación adicional de 
-nuevas características. El juego tiene como objetivo 
-ser más flexible para el usuario ya que se da la 
-posibilidad de hacer cambios a las características 
-de su juego antes, durante y después de haber sido empezado. 
-Por otro lado, el usuario tiene la opción de elegir dos opciones 
-de juego, puede ser contra otro jugador de forma local o 
-contra la computadora.
+### Características
+
+#### Características Principales
+
+- **Orden de juego:**
+
+  El juego comienza con la elección de un turno al azar, dependiendo de ello un jugador u otro tiene la posibilidad de realizar cualquier movimiento dentro del laberinto, mientras que el otro solo espera y el juego no ejecuta ninguna acción extra mientras esto ocurre.
+
+- **Asignación del ganador:**
+
+  El primer jugador que llegue a la meta se declara ganador, y el juego muestra en pantalla el nombre del jugador ganador.
+
+- **Partidas sin limites:**
+
+  Cada juego es único y diferente, por lo que no habrán 2 laberintos iguales que puedas jugar. Siempre son distintos.
+
+#### Caracteristicas Adicionales
+
+- Implementación de la jugabilidad multijugador desde un mismo dispositivo (local).
+- Selector de diferentes dificultades al jugar contra un bot (computadora).
+- Gráficos, musica, y diferente contenido multimedia para mejorar la experiencia de juego.
+- Posicionamiento adaptable de los elementos del juego de acuerdo al tamaño de la pantalla.
