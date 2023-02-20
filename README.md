@@ -96,3 +96,15 @@ entre un jugador de manera local, u contra la misma computadora.
 - Selector de diferentes dificultades al jugar contra un bot (computadora).
 - Gráficos, musica, y diferente contenido multimedia para mejorar la experiencia de juego.
 - Posicionamiento adaptable de los elementos del juego de acuerdo al tamaño de la pantalla.
+
+### Tecnologías
+
+- Lenguaje de programación C++20 o posterior
+- Librería Raylib para el manejo de gráficos para Windows en C++
+
+### Temas de interés
+
+- Backtracking algorithm to generate random mazes
+- Deep-First Search to find the path in the maze
+- Breadth-First Search to find the shortest path in the maze
+- Using Raylib library to create games with C++
