@@ -108,3 +108,45 @@ entre un jugador de manera local, u contra la misma computadora.
 - Deep-First Search to find the path in the maze
 - Breadth-First Search to find the shortest path in the maze
 - Using Raylib library to create games with C++
+
+### Algoritmos y contenedores utilizados
+
+- **BFS (Breadth First Search):**
+
+  Una búsqueda en anchura (BFS) es un algoritmo que se utiliza para buscar y recorrer nodos en un grafo o árbol, empezando por el nodo raíz y explorando primero los nodos vecinos en el mismo nivel antes de pasar a los nodos del siguiente nivel. Se implementa utilizando una cola para almacenar los nodos que se van explorando en cada nivel y es eficiente para encontrar el camino más corto entre dos nodos.
+
+<div align="center">
+<img src= bfs.jpg format=jpg&name=small" width="500px">
+</div>
+
+- **DFS (Deep First Search):**
+
+  Una búsqueda en profundidad (DFS) es un algoritmo que se utiliza para recorrer y buscar nodos en un grafo o árbol, explorando un camino hasta que se alcance un nodo sin hijos, para después regresar y explorar otro camino. Se comienza por el nodo raíz y se explora a profundidad antes de regresar a explorar otros caminos. El DFS puede implementarse mediante recursión o utilizando una pila para almacenar los nodos a explorar.
+
+<div align="center">
+<img src= dfs.jpg format=jpg&name=small" width="500px">
+</div>
+
+- **Backtracking:**
+
+  Backtracking, también conocido como "vuelta atrás", es un algoritmo que se utiliza para resolver problemas de decisión en los que es necesario buscar todas las posibles soluciones. Comienza con una solución parcial y avanza iterativamente intentando agregar elementos adicionales, hasta encontrar una solución completa o descubrir que no hay solución. Si se llega a un callejón sin salida, se regresa a la solución anterior y se intenta otra opción. El backtracking puede ser implementado mediante recursión o utilizando una pila para almacenar las soluciones parciales.
+
+<div align="center">
+<img src= bct.png format=jpg&name=small" width="500px">
+</div>
+
+- **Stack:**
+
+  Un stack (pila) es una estructura de datos que se utiliza en programación para almacenar y acceder a elementos de manera ordenada, siguiendo el principio de "último en entrar, primero en salir" (LIFO). Es decir, el último elemento añadido a la pila es el primero en ser eliminado. Las operaciones fundamentales de una pila son "push" (añadir un elemento al final) y "pop" (eliminar el último elemento añadido). Las pilas se utilizan en diversas aplicaciones, como el manejo de llamadas en una función recursiva, el uso del historial en un navegador web, entre otros.
+
+<div align="center">
+<img src= stack.png format=jpg&name=small" width="500px">
+</div>
+
+- **Queue:**
+
+  Una queue (cola) es una estructura de datos en programación que se utiliza para almacenar y acceder a elementos de manera ordenada, siguiendo el principio de "primero en entrar, primero en salir" (FIFO). Es decir, el primer elemento añadido a la cola es el primero en ser eliminado. Las operaciones fundamentales de una cola son "enqueue" (añadir un elemento al final) y "dequeue" (eliminar el primer elemento añadido). Las colas se utilizan en diversas aplicaciones, como en la impresión de documentos, el manejo de mensajes en una red de comunicación, entre otros.
+
+<div align="center">
+<img src= queue.png format=jpg&name=small" width="500px">
+</div>
